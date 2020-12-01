@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #modal.open{
+            display:block;
+        }
+        #outlay.open{
+            display:block;
+        }
+        #outlay{
+            background-color: rgba(0,0,0,75%);
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            display:none;
+        }
+        #modal{
+            background-color:white;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            padding:1em;
+            border-radius: 10px;
+            border: 1px solid black;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <button id="open-modal-btn">Open Modal</button>
+    <div id="outlay"></div>
+    <div id="modal">
+        <h1>This is the modal</h1>
+        <button id="close-modal-btn">Close</button>
+    </div>
+</body>
+</html>
+
+<script>
+
+
+    const openModalButton = document.querySelector("#open-modal-btn")
+    const outlay = document.querySelector("#outlay")
+    const modal = document.querySelector("#modal")
+    const closeModalButton = document.querySelector("#close-modal-btn")
+
+    openModalButton.addEventListener("click", openModal)
+    closeModalButton.addEventListener("click", closeModal)
+    outlay.addEventListener("click", closeModal)
+
+    function openModal(){
+        modal.classList.add("open")
+        outlay.classList.add("open")
+    }
+    function closeModal(){
+        modal.classList.remove("open")
+        outlay.classList.remove("open")
+    }
+
+
+
+
+</script>
+

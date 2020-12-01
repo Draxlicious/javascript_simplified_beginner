@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal retry</title>
+    <style>
+    #modal.open {
+      display: block;
+    }
+
+    #overlay.open {
+      display: block;
+    }
+      
+    #modal {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: .25rem;
+    background-color: white;
+    }
+
+    #overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .75);
+    }
+    </style>
+</head>
+<body>
+    <button class="openModalBTN">Get Modal</button>
+    <div id="overlay"></div>
+
+    <div id="modal">
+
+        <h3>This is a modal</h3>
+        <button class="closeModalBTN">Close Modal</button>
+    </div>
+</body>
+</html>
+
+<script>
+
+    const modal = document.querySelector("#modal")
+    const openModalBTN = document.querySelector(".openModalBTN")
+    const closeModalBTN = document.querySelector(".closeModalBTN")
+    const overlay = document.querySelector("#overlay")
+
+    openModalBTN.addEventListener("click", openModal)
+
+    function openModal(){
+        modal.classList.add("open")
+        overlay.classList.add("open")
+    }
+
+    closeModalBTN.addEventListener('click', function(){
+        modal.classList.remove("open")
+        overlay.classList.remove("open")
+    })
+
+    overlay.addEventListener('click', function(){
+        modal.classList.remove("open")
+        overlay.classList.remove("open")
+    })
+
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Simple List</title>
+  <style>
+    .list-item {
+    cursor: pointer;
+    width: min-content;
+    }
+
+    .list-item:hover {
+    color: red;
+    text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <div id="list">
+
+  </div>
+  
+  <form id="new-item-form">
+    <label for="item-input">New Item</label>
+    <input type="text" id="item-input">
+    <button type="submit">Add Item</button>
+  </form>
+</body>
+</html>
+
+
+<script>
+
+//1- Select all elements
+let form = document.querySelector("#new-item-form")
+const list = document.querySelector("#list")
+let input = document.querySelector("#item-input")
+//2- When i submit the form add a new element
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    let listElement = document.createElement("p")
+    listElement.innerHTML = input.value
+    listElement.classList.add("list-item")
+    input.value = ""
+    listElement.addEventListener('click', ()=>{
+        listElement.remove();
+    })
+    list.appendChild(listElement)
+})
+
+
+</script>

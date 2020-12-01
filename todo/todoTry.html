@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="list"></div>
+
+    <form id="form"> 
+        <label>Submit</label>
+        <input type="text" id="submit">
+        <input type="button" id="submitBTN" value="submit">
+    </form>
+</body>
+</html>
+
+<script>
+    const form = document.querySelector("#form")
+    const list = document.querySelector("#list")
+    const input = document.querySelector("#submit")
+    const submitBTN = document.querySelector("#submitBTN")
+    
+    form.addEventListener("click", function(e){
+        e.preventDefault();
+        const item = document.createElement("p")
+        item.innerHTML = input.value;
+        input.value = "";
+        item.addEventListener('click', function(){
+            item.remove();
+
+        })
+        list.appendChild(item)
+    })
+
+
+</script>
