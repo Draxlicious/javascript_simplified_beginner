@@ -198,10 +198,95 @@ const person = {
 //     currentPerson = currentPerson.friend
 // }
 
-function printNames(currentPerson){
-    if(currentPerson == null) return
-    console.log(currentPerson.name)
-    printNames(currentPerson.friend)
+// function printNames(currentPerson){
+//     if(currentPerson == null) return
+//     console.log(currentPerson.name)
+//     printNames(currentPerson.friend)
+// }
+
+// printNames(person)
+
+
+// let button = document.querySelector('button')
+// addEventlistenerClick(button, ()=>{console.log("clicked")
+// })
+
+// function addEventlistenerClick(element, callback){
+//     element.addEventListener("click", callback)
+//     console.log("hi")
+// }
+
+
+// const promise = new Promise((resolve, reject)=>{
+//     const sum = 1 + 1;
+//     if(sum === 3){
+//         resolve("Success")
+//     }else{
+//         reject("Error")
+//     }
+// })
+
+
+// promise.then(message =>{
+//     console.log(message);
+// }).catch(err =>{
+//     console.error(err);
+// })
+
+
+// let button = document.querySelector('button')
+
+
+// function addEventListenerPromise(element, method){
+//     return new Promise((resolve, reject) =>{
+//         element.addEventListener(method, resolve)
+//     })
+// }
+// addEventListenerPromise(button, 'click').then((e)=>{
+//     console.log("clicked")
+//     console.log(e)
+// })
+
+
+// Promise.all([
+//     Promise.resolve("1"),
+//     Promise.resolve("2"),
+//     Promise.resolve("3"),
+// ]).then(message => {
+//     console.log(message)
+// })
+
+
+function getValueWithDelay(value, delay){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+           resolve(value) 
+        }, delay);
+    })
 }
 
-printNames(person)
+async function getValueWithDelayError(value, delay){
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+               reject("Error") 
+            }, delay);
+        })
+}
+
+async function doStuff(){
+    try {
+        const workingValue = await getValueWithDelay("Shit works", 250)
+        console.log(workingValue);
+        const workingValue2 = await getValueWithDelay("Shit works again", 750)
+        console.log(workingValue2);
+        const failedValue = await getValueWithDelayError("Shit dont", 750)
+        console.log(failedValue);
+        
+    } catch (error) {
+        console.error(error)
+    } finally{
+        console.log("We finally made to the end")
+    }
+}
+
+doStuff()
